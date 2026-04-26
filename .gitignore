@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# Environment
+.env
+.env.local
+
+# Input
+input/
+*.txt
+
+# Output
+output/
+*.mp4
+
+# Logs
+*.log
+docker-logs/
+
+# Data
+data/
+/data
+
+# Temporary files
+/tmp/
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

@@ -1,0 +1,43 @@
+{
+  "skills": [
+    {
+      "name": "novel-to-video",
+      "description": "将小说文本通过 waoowaoo 转换为AI漫剧视频 - 六阶段完整流程",
+      "entry": "src/novel_to_video.py",
+      "features": [
+        "支持 --mock 参数本地测试（无需 waoowaoo 服务）",
+        "输出文件以时间戳命名 (output/{YYYYMMDD_HHMMSS}.mp4)",
+        "六阶段完整流程：环境准备 → 故事变分镜 → 分镜变画面声音 → 生成视频 → 合并视频 → 下载本地"
+      ],
+      "stages": [
+        "第一阶段：环境准备 - 部署waoowaoo、配置API Key（火山引擎ARK、阿里云百炼）",
+        "第二阶段：故事变分镜 - 创建项目、写入故事、AI分析、生成片段、生成分镜",
+        "第三阶段：分镜变画面和声音 - 生成漫画图片、配置角色配音、分析配音、生成配音",
+        "第四阶段：画面变完整视频 - 提交视频生成请求",
+        "第五阶段：合并视频 - 下载所有视频片段并用ffmpeg合并",
+        "第六阶段：下载至本地 - 最终MP4输出到output目录"
+      ],
+      "api_endpoints": {
+        "auth": "/api/auth/csrf, /api/auth/callback/credentials",
+        "project": "/api/projects",
+        "episode": "/api/novel-promotion/{projectId}/episodes",
+        "analyze": "/api/novel-promotion/{projectId}/analyze-global",
+        "clips": "/api/novel-promotion/{projectId}/clips",
+        "storyboard": "/api/novel-promotion/{projectId}/script-to-storyboard-stream",
+        "panel_image": "/api/novel-promotion/{projectId}/regenerate-panel-image",
+        "voice_analyze": "/api/novel-promotion/{projectId}/voice-analyze",
+        "voice_generate": "/api/novel-promotion/{projectId}/voice-generate",
+        "video_generate": "/api/novel-promotion/{projectId}/generate-video",
+        "task_status": "/api/tasks/{taskId}",
+        "file_download": "/api/files/{filename}"
+      },
+      "voice_models": {
+        "edge-tts": "zh-CN-YunxiNeural (少年男声), zh-CN-XiaoxiaoNeural (活泼女声)",
+        "uploaded": "自定义上传音频作为角色声音"
+      },
+      "video_models": {
+        "default": "ark::doubao-seedance-1-5-pro-251215"
+      }
+    }
+  ]
+}
